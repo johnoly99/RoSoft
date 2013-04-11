@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="created" content="Wed, 27 Mar 2013 17:29:06 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Welcome to your new Rostock MAX!</title>
+    
+    <style type="text/css">
+    <!--
+    body {
+      color:#000000;
+      background-color:#FFFFFF;
+    }
+    a  { color:#0000FF; }
+    a:visited { color:#800080; }
+    a:hover { color:#008000; }
+    a:active { color:#FF0000; }
+	
+    -->
+    </style>
+  <body>
+  <center>
+  <a href="http://seemecnc.com"><img src="images/SeeMeCNCHeader.gif" target="_blank"width="728" height="128" alt="" title="seemebanner" border="0" /></a>
+  </br>
+  </br>
+  
+  
+ <h1>
+<b>Thanks for purchasing a Rostock MAX form SeeMeCNC</b>
+</h1>
+
+</br>
+</br>
+</br>
+</br>
+<h2>
+    This guide will help you familiarize yourself with all the different software, manuals and other awesomeness that you'll need to use and modify your Rostock MAX.
+    
+    </h2>
+      <p>
+    You'll find a folder with all the Manuals you need to assemble, calibrate and run your Rostock MAX.  Some of the phots may differ, as updates to the design have not been added, but explanations are there, and pictures to show what the new parts look like.  For instance, the manual has the smaller square heated bed in most photos, however if you read the Onyx Installation guide before assembly, you will understand that it takes the place of the smaller bed.
+</p>
+</br>
+</br>
+</br>
+      <h2>
+          Setting up Repetier Host
+          </h2>
+<p>
+The first thing to do is to drag the Repetier-Host app into your applications folder.  Repetier Host is the program you will use to control your new printer.  It has many features you'll love such as built in slic3r software for generating the Gcode for your prints, .stl file manipulation like scaling, rotating, and a really great Gcode viewer to see a virtual printed part by reading your Gcode and showing you what it will look like when it's printed!
+</br>
+</br>
+      Now go ahead and open up Repetier Host.  Go up to the top right and click on Printer Settings, it's the gear looking icon.  Don't worry about the port yet, you will see your RAMBo listed there when you plug in the USB cable.  For the Baud Rate, set it to 250000.  Don't worry about the stop bits, parity or transfer protocol, leave those defaulted.  Also, the recieve cache size should be left defaulted to 63.  Make sure ping-pong is un-checked, and you can leave the checkmark in the Firmware sends OK box.  Once you are ready to connect to your machine, you will need to come back to here and choose the USB port from the drop down list.
+</br>
+</br>      
+      Next, click on the Behaviour tab.  Set the Travel and Z axis feedrate to 2500.  This speed is in mm/min, and only applies to when you click on the movement buttons when you are manually moving the machine.  If you are printing in ABS, set your default Extruder temp to 200 and the bed to 70.  These are the temps that will be automatically filled in to the temp boxes when you start Repetier.  Make sure the Go To Dispose area after job/kill is UN checked, we don't want to send the printer somewhere after a print, other than home.  It's a good idea to check the boxes for Disabling the extruder and bed after a job, that way it will shut the heaters off after a print is finished.
+</br>
+</br>
+      Now, click on the dimension tab, and in the Printer type dropdown, choose Delta with Cylindrical print shape.  Change Home X to x=0, Home Y to y=0 and Home Z to z max.  Now set the x min to -130, x max to 130, y min to -130 and y max to 130.  These values are only for allowing repetier to manually jog the machine to these coordinates, it will not allow you to send it to a greater coordinate than what is specified here, however, the Gcode can.  Set the diameter to 280, and the Z for now we will set to 350.  Once you have the machine assembled and calibrated, you should go into here and change the Z height to match the max z value from the firmware.  This again will not allow repetier to jog below zero, however gcode can.
+</br>
+</br>
+     That's it!  Click the apply button, and you're done.  You now have Repetier Host all set up.  Congrats!
+      
+      
+</p>
+</br>
+      </br>
+      </br>
+      <h2>
+          Installing starting Slic3r Settings
+          </h2>
+<p>
+      Now that you have Repetier all set up, lets go ahead and install some good settings for slicing (creating the Gcode).  To do this, in Repetier click on the slicer tab, and to the right of slic3r, click configure.  This will launch the Slic3r software.  Go to file>import config and point it at the config file in the folder Slicing Settings>Slic3r.  This will load some good defaults to get you started printing with the Rostock MAX.
+</p>
+      
+      </br>
+      </br>
+      </br>
+<h2>
+    Opening up the firmware in Arduino
+    </h2>
+      <p>
+      You will need to download Arduino from the <a href="http://arduino.cc/en/Main/Software">Arduino Download page</a>.  As of this time, the newest version is 1.0.4, and has been tested to work fine with the firmware.  Once you have Arduino installed, go ahead and open it up, and file>open the repetier.ino file in the folder here.  This is the code that runs on the RAMBo.  It should be all set, and ready for you to upload to the board.  To do that, go to tools/Board type and choose Arduino Mega 2560.  Now go to port and choose the port that the RAMBo is on.  NOw, click on the upload icon at the top of the screen.  It will take a few minutes to upload all the code, and it will let you know by saying "Done Uploading" at the bottom of the screen.  That's it!  You just programmed an Arduino.  From here on out, since the RAMBo has eeprom memory, you can adjust the firmware from Repetier host by clicking on Printer>EEPROM settings.  There, you can change things like temperatrue settings, axis tuning, and more.  Take a look around, and see all that you can hack on, it's fun!
+      
+      
+</br>
+</br>
+      Thanks for choosing SeeMeCNC, and make sure to check out our <a href="http://forum.seemecnc.com">SeeMeCNC Forums</a> too!
+</br>
+If you have any questions, feel free to email us at <a href="mailto:support@seemecnc.com">SeeMeCNC Support</a> (support@seemecnc.com)
+</p>
+  </body>
+  <footer>
+  SeeMeCNC&trade; &copy;2013
+  
+  
+  
+  </footer>
+</html>
